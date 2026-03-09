@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Shoot - Game On!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #ar-warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game-ui">
+        <div class="info-box" id="timer">Time: 120s</div>
+        <div class="info-box" id="counter">Collected: 0/10</div>
+    </div>
+
+    <!-- Start Overlay for User Gesture -->
+    <div id="start-overlay"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(106, 27, 154, 0.95); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem;">
+        <h1 style="color: white; margin-bottom: 1rem;">READY TO SHOOT?</h1>
+        <p style="margin-bottom: 2rem; font-size: 1.2rem;">Tap the button below to enter AR and start the game!</p>
+        <div id="ar-button-container"></div>
+    </div>
+
+    <!-- Win/Loss Popups -->
+    <div class="overlay" id="end-overlay"></div>
+    <div class="popup" id="end-popup">
+        <h2 id="end-title">You Win!</h2>
+        <p id="end-message" style="margin: 1rem 0;">Your Time: 45.2s</p>
+        <button onclick="window.location.reload()">RETRY</button>
+        <button onclick="window.location.href='leaderboard.html'" class="leaderboard-btn">LEADERBOARD</button>
+    </div>
+
+    <script type="module" src="js/game.js"></script>
+</body>
+
+</html>

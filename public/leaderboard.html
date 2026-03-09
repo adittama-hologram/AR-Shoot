@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - AR Shoot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        .leaderboard-table th {
+            color: var(--primary-color);
+        }
+
+        .rank {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="max-width: 500px;">
+        <h1>Leaderboard</h1>
+        <div id="loading">Loading scores...</div>
+        <table class="leaderboard-table" id="leaderboard-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Time (s)</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- Data will be injected here -->
+            </tbody>
+        </table>
+
+        <button onclick="window.location.href='index.html'" style="margin-top: 2rem;">BACK TO MENU</button>
+    </div>
+
+    <script>
+        async function fetchLeaderboard() {
+            try {
+                const response = await fetch('/api/leaderboard');
+                const data = await response.json();
+
+                const loader = document.getElementById('loading');
+                const table = document.getElementById('leaderboard-table');
+                const tbody = document.getElementById('leaderboard-body');
+
+                loader.style.display = 'none';
+                table.style.display = 'table';
+
+                if (data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center">No scores yet! Be the first!</td></tr>';
+                    return;
+                }
+
+                data.forEach((entry, index) => {
+                    const row = `
+                        <tr>
+                            <td class="rank">#${index + 1}</td>
+                            <td>${entry.playerName}</td>
+                            <td>${entry.time.toFixed(2)}s</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
+            } catch (err) {
+                console.error('Error fetching leaderboard:', err);
+                document.getElementById('loading').innerText = 'Error loading scores.';
+            }
+        }
+
+        fetchLeaderboard();
+    </script>
+</body>
+
+</html>

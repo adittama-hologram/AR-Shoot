@@ -22,7 +22,9 @@ if (process.env.MONGODB_URI) {
 
 // Routes
 const indexRouter = require('./app/routes/index');
+const leaderboardRouter = require('./app/routes/leaderboard');
 app.use('/api', indexRouter);
+app.use('/api/leaderboard', leaderboardRouter);
 
 
 // 404 Handling

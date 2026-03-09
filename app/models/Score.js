@@ -1,20 +1,14 @@
 const mongoose = require('mongoose');
 
-const scoreSchema = new mongoose.Schema({
+const ScoreSchema = new mongoose.Schema({
     playerName: {
         type: String,
         required: true,
         trim: true
     },
-    playerScore: {
+    time: {
         type: Number,
-        required: true,
-        default: 0
-    },
-    cpuScore: {
-        type: Number,
-        required: true,
-        default: 0
+        required: true
     },
     date: {
         type: Date,
@@ -22,4 +16,4 @@ const scoreSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Score', scoreSchema);
+module.exports = mongoose.model('Score', ScoreSchema);

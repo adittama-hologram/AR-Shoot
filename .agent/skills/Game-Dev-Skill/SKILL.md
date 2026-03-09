@@ -6,8 +6,10 @@ description: Helps with Game Development on web task.
 # Web Dev
 This game is web based so please also follow the WebDev-Skill
 
-# Game Description
 The main concept of this game is AR shooter game. when player spawned there will be 10 icons that scattered around player. player then can aim their camera and then tap these icons to collected it. 
+
+### AR Standard
+**IMPORTANT**: All AR development MUST use the **WebXR Device API**. Do not use legacy `DeviceOrientation` or camera feed overlays for professional AR stability. Use `THREE.WebXRManager` for session handling.
 
 # Start of the Game
 Before the game started player is instructed to input their name, this name will then recorded later for the Leaderboard. after the player enter their name they can press the "start" button to start the game
@@ -27,8 +29,8 @@ Leaderboard score is stored in database, this leaderboard is record the player n
 # Icons
 There are 10 icons in which player can collect by tapping on it. these icon must be unique to eachother. Make the icons looklike a fast food and baverages company icon.
 
-# Controll
-the game contoll the player camera and gyro to aim it.
+# Control
+The game uses **WebXR** to track the player's real-world position and orientation. Aiming is done by moving the device in 3D space. Interaction (shooting/collecting) is handled via WebXR controller select events (screen taps).
 
 # Design
 - the game design is colorfull, using purple and white as their main color.
