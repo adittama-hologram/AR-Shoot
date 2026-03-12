@@ -16,6 +16,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 10013
           script: |
-            cd projects/AR-Shoot
+            cd /home/rohman/projects/AR-Shoot
             git pull origin main
             docker compose up -d --build
