@@ -16,6 +16,11 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 10013
           script: |
+            set -e
+            echo "Moving to project directory..."
             cd /home/rohman/projects/AR-Shoot
+            echo "Pulling latest changes from main..."
             git pull origin main
+            echo "Rebuilding and restarting Docker containers..."
             docker compose up -d --build
+            echo "Deployment successful!"
