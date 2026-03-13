@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Shoot - Collect 'Em All!</title>
+    <title>AR Snatch - Collect 'Em All!</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container" id="main-menu">
-        <h1>AR Shoot</h1>
+        <h1>AR Snatch</h1>
         <p style="margin-bottom: 1.5rem; color: #666;">Collect 10 icons in 120 seconds!</p>
 
         <input type="text" id="playerName" placeholder="Enter Your Name" maxlength="15">
@@ -47,7 +47,7 @@
                 alert('Please enter your name!');
                 return;
             }
-            localStorage.setItem('ar_shoot_player', name);
+            localStorage.setItem('ar_snatch_player', name);
 
             // Show HTP Popup
             htpOverlay.style.display = 'block';
