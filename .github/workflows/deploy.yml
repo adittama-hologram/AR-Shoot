@@ -1,4 +1,4 @@
-# Deployment Workflow for AR-Shoot
+# Deployment Workflow for AR-Snatch
 name: Server Deployment
 on:
   push:
